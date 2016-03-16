@@ -13,7 +13,7 @@ struct Node
 typedef struct Node NODE;
 typedef struct Node *LINKLIST;
 
-//初始化链表，产生一个空链表2
+//初始化链表，产生一个空链表
 LINKLIST IniteList()
 {
 	LINKLIST head;
@@ -60,12 +60,51 @@ int ListLength(LINKLIST h)
 }
 
 //向链表尾部添加结点，无输入
-LINKLIST AddNode(LINKLIST h,Elem e)
+/*LINKLIST AddNode(LINKLIST h,Elem e)
 {
 	LINKLIST head,pt,p;
 	pt = head = h;
 	p = (LINKLIST)malloc(sizeof(struct Node));
 	p->data = e;
+	p->next = NULL;
+	if(pt == NULL)
+		head = p;
+	else
+	{
+		while(pt->next)
+		{
+			pt = pt->next;
+		}
+		pt->next = p;
+	}
+	return head;	
+}
+*/
+
+//向链表表尾添加结点，有输入
+LINKLIST AddNode(LINKLIST h)
+{
+	LINKLIST head,pt,p;
+	pt = head = h;
+	p = (LINKLIST)malloc(sizeof(struct Node));
+	printf("请输入要添加的数据：");
+	scanf("%d",&p->data);
+	p->next = NULL;
+	if(pt == NULL)
+	{
+		head = p;
+	}
+	else
+	{
+		while(pt ->next)
+		{
+			pt = pt->next;
+		}
+		pt->next = p;
+	}
+	return head;
+
+
 }
 
 
