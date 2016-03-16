@@ -13,7 +13,7 @@ struct Node
 typedef struct Node NODE;
 typedef struct Node *LINKLIST;
 
-//初始化链表，产生一个空链表
+//初始化链表，产生一个空链表2
 LINKLIST IniteList()
 {
 	LINKLIST head;
