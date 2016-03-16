@@ -60,7 +60,7 @@ int ListLength(LINKLIST h)
 }
 
 //向链表尾部添加结点，无输入
-/*LINKLIST AddNode(LINKLIST h,Elem e)
+LINKLIST AddNodeInLast(LINKLIST h,Elem e)
 {
 	LINKLIST head,pt,p;
 	pt = head = h;
@@ -79,13 +79,13 @@ int ListLength(LINKLIST h)
 	}
 	return head;	
 }
-*/
+
 
 //向链表表尾添加结点，有输入
 LINKLIST AddNode(LINKLIST h)
 {
 	LINKLIST head,pt,p;
-	pt = head = h;
+	pt = h;
 	p = (LINKLIST)malloc(sizeof(struct Node));
 	printf("请输入要添加的数据：");
 	scanf("%d",&p->data);
@@ -103,9 +103,57 @@ LINKLIST AddNode(LINKLIST h)
 		pt->next = p;
 	}
 	return head;
+}
 
+//将节点插入到指定位置
+LINKLIST InsertNode(LINKLIST h,int i,Elem e)
+{
+	LINKLIST head,pt,p;
+	int j=1;
+	pt = h;
+	p = (LINKLIST)malloc(sizeof(NODE));
+	p->data = e;
+	p->next = NULL;
+
+	if(i<1)
+	{
+		printf("error");
+		exit(1);
+	}
+	if(pt && i>ListLength(h))
+	{
+		while(pt->next)
+		{
+			pt = pt->next;
+		}
+		pt->next = p;
+	}
+	else if(pt == NULL)
+	{
+		head = p;
+	}
+	else
+	{
+		if(i == 1)
+		{
+			head = p;
+		}
+		else
+		{
+			for(j=1;j<i;j++)
+			{
+				pt = pt->next;
+			}
+			pt->next = p;
+		}
+	}
+	return head;
+
+
+	
 
 }
+
 
 
 
