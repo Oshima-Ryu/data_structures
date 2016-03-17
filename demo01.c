@@ -17,7 +17,8 @@ typedef struct Node *LINKLIST;
 LINKLIST IniteList()
 {
 	LINKLIST head;
-	head = NULL;
+	head = (LINKLIST)malloc(sizeof(NODE));
+	head->next = NULL;
 	return head;
 }
 
@@ -30,6 +31,7 @@ LINKLIST IniteList()
 //遍历打印链表
 int printList(LINKLIST h)
 {
+	
 	//返回打印结果，0表示无数据，1表示打印成功完成
 	LINKLIST pt = h;
 	if(pt->next == NULL)
@@ -37,9 +39,9 @@ int printList(LINKLIST h)
 		printf("sorry,there is nothing!");
 		return 0;
 	}
-	while(pt)
+	while(pt->next)
 	{
-		printf("%d\n",pt->data);
+		printf("%d\n",pt->next->data);
 		pt = pt->next;
 	}
 	printf("\n");
@@ -51,10 +53,11 @@ int ListLength(LINKLIST h)
 {
 	LINKLIST pt = h;
 	int len = 0;
-	while(pt)
+	while(pt->next)
 	{
 		len++;
 		pt = pt->next;
+		//printf("length:%d\n",len);
 	}
 	return len;
 }
@@ -67,8 +70,8 @@ LINKLIST AddNodeInLast(LINKLIST h,Elem e)
 	p = (LINKLIST)malloc(sizeof(struct Node));
 	p->data = e;
 	p->next = NULL;
-	if(pt == NULL)
-		head = p;
+	if(pt->next == NULL)
+		head->next= p;
 	else
 	{
 		while(pt->next)
@@ -210,5 +213,18 @@ Elem getElem(LINKLIST h,int i)
 
 void main()
 {
+	LINKLIST p;
+	Elem n=8,i;
+	p = IniteList();
+	AddNodeInLast(p,n);
+	for(i=0;i<10;i++)
+	{
+		AddNodeInLast(p,i);
+
+	}
+	printf("%d\n",ListLength(p));
+
+
+	printList(p);
 
 }
