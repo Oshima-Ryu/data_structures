@@ -110,7 +110,7 @@ LINKLIST InsertNode(LINKLIST h,int i,Elem e)
 {
 	LINKLIST head,pt,p;
 	int j=1;
-	pt = h;
+	pt = head = h;
 	p = (LINKLIST)malloc(sizeof(NODE));
 	p->data = e;
 	p->next = NULL;
@@ -148,9 +148,32 @@ LINKLIST InsertNode(LINKLIST h,int i,Elem e)
 		}
 	}
 	return head;
+}
 
+//删除链表中的某位置的结点
+LINKLIST ListDelete(LINKLIST h,int i)
+{
+	LINKLIST pt,tmp;
+	int j;
+	pt = h;
+	tmp = (LINKLIST)malloc(sizeof(NODE));
+	if(i<1 || i>ListLength(h) || h == NULL)
+	{
+		printf("error");
+		exit(1);
+	}
+	if(pt && i<ListLength(h))
+	{
+		for(j=1;j<i;j++)
+		{
+			pt = pt->next;
+		}
+		tmp = pt->next;
+		pt->next = tmp->next;
+		free(tmp);		
+	}
+	return pt;
 
-	
 
 }
 
