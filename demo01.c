@@ -181,6 +181,27 @@ LINKLIST isEmpty(LINKLIST h)
 	return (h->next);
 }
 
+//返回指定位置结点的值
+Elem getElem(LINKLIST h,int i)
+{
+	LINKLIST pt;
+	int j;
+	pt = h;
+	if(i < 1 || i > ListLength(h) || pt == NULL)
+	{
+		printf("error!");
+		exit(1);
+	}
+	if(pt && i < ListLength(h))
+	{
+		for(j = 0;j < i;j++)
+		{
+			pt = pt->next;
+		}		
+	}
+	return pt->data;
+}
+
 
 
 
