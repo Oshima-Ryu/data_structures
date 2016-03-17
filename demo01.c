@@ -173,9 +173,14 @@ LINKLIST ListDelete(LINKLIST h,int i)
 		free(tmp);		
 	}
 	return pt;
-
-
 }
+
+//ÅÐ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+LINKLIST isEmpty(LINKLIST h)
+{
+	return (h->next);
+}
+
 
 
 
